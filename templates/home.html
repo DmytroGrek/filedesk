@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Дистрибутивы 1С</title>
+</head>
+<body>
+    <h2>Список доступных дистрибутивов для вашей системы</h2>
+        {% load tmp_filters %}
+        {%for album in albums%}
+            <div>
+                <h2>{{album.title}}</h2>
+                <div>{{album.description}}</div>
+                {%if album.upload != None %}
+                    {{ album.upload.name|get_html_for_file:album.upload.url |safe}}
+                {%endif%}
+
+            </div>
+        {%endfor%}
+</body>
+</html>
